@@ -8,8 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <views:FlightBoard>
-            
-        </views:FlightBoard>
+        <views:Manual/>
     </Grid>
 </Window>
