@@ -1,6 +1,7 @@
 ﻿using FlightSimulator.Model.Interface;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace FlightSimulator.Model
             }
         }
         #endregion
+        public event PropertyChangedEventHandler PropertyChanged;
         public string FlightServerIP
         {
             get { return Properties.Settings.Default.FlightServerIP; }
