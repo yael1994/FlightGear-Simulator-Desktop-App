@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Model
 {
-    public class ApplicationSettingsModel 
+    public class ApplicationSettingsModel : ISettingsModel
     {
         #region Singleton
         private static ISettingsModel m_Instance = null;
@@ -24,21 +24,22 @@ namespace FlightSimulator.Model
             }
         }
         #endregion
+        public event PropertyChangedEventHandler PropertyChanged;
         public string FlightServerIP
         {
             get { return Properties.Settings.Default.FlightServerIP; }
-            set { Properties.Settings.Default.FlightServerIP = value;}
+            set { Properties.Settings.Default.FlightServerIP = value; }
         }
         public int FlightCommandPort
         {
             get { return Properties.Settings.Default.FlightCommandPort; }
-            set { Properties.Settings.Default.FlightCommandPort = value;}
+            set { Properties.Settings.Default.FlightCommandPort = value; }
         }
 
         public int FlightInfoPort
         {
             get { return Properties.Settings.Default.FlightInfoPort; }
-            set { Properties.Settings.Default.FlightInfoPort = value;}
+            set { Properties.Settings.Default.FlightInfoPort = value; }
         }
 
         public void SaveSettings()
