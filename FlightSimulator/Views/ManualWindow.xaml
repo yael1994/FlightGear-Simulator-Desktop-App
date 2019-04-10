@@ -15,6 +15,11 @@
                 <RotateTransform Angle="90" />
             </TextBlock.LayoutTransform>
         </TextBlock>
+        <TextBlock x:Name="elevator" Text="← elevtor →" DockPanel.Dock="Right" VerticalAlignment="Center" FontWeight="ExtraBold">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="90" />
+            </TextBlock.LayoutTransform>
+        </TextBlock>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -34,20 +39,12 @@
                 <ColumnDefinition Width="357*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="rudder" Text="← rudder → " FontWeight="ExtraBold" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Center" RenderTransformOrigin="0.546,13.768" Margin="314,357,0,0" Grid.ColumnSpan="3" Width="114"/>
+
             <Grid>
-                <Slider x:Name="rudderSlid" Minimum=" -1" Maximum=" 1" TickFrequency="0.1" TickPlacement="BottomRight" Margin="195,340,-194.667,-340"/>
+                <Slider x:Name="rudderSlid" Minimum=" -1" Maximum=" 1" TickFrequency="0.1" TickPlacement="BottomRight" Margin="190,347,-189.667,-347"/>
+                <TextBlock x:Name="rudder" Text="← rudder → " FontWeight="ExtraBold" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Center" RenderTransformOrigin="0.546,13.768" Margin="303,357,-82.667,0" Width="145"/>
             </Grid>
-            <local:Joystick HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="4" Margin="179,-20,217.333,62" Height="352" Width="381"/>
+            <local:Joystick HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="4" Margin="171,-20,209.333,61" Height="353" Width="381"/>
         </Grid>
-    
-            <Grid TextBlock.TextAlignment="Right">
-                   <TextBlock x:Name="elevator" Text="← elevator →" DockPanel.Dock="Right" VerticalAlignment="Center" FontWeight="ExtraBold" Margin="5,-367,-5.667,-387">
-            <TextBlock.LayoutTransform>
-                <RotateTransform Angle="90" />
-            </TextBlock.LayoutTransform>
-        </TextBlock>
-            </Grid>
-    
     </DockPanel>
 </Window>
