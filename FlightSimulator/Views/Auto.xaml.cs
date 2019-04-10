@@ -1,6 +1,4 @@
-﻿using FlightSimulator.Model;
-using FlightSimulator.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,32 +10,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace FlightSimulator.Views
 {
     /// <summary>
-    /// Interaction logic for Setting.xaml
+    /// Interaction logic for Auto.xaml
     /// </summary>
-    public partial class Setting : Window
+    public partial class Auto : UserControl
     {
-        ApplicationSettingViewModel vm;
-        public Setting()
+        public Auto()
         {
             InitializeComponent();
-            vm = new ApplicationSettingViewModel(new ApplicationSettingsModel());
-            DataContext = vm;
         }
 
-        private void BtnCancle_Click(object sender, RoutedEventArgs e)
+        private void Clear_Click(object sender, RoutedEventArgs e)
         {
-
+            this.TextBox.Clear();
         }
 
-        private void BtnOK_Click(object sender, RoutedEventArgs e)
+        private void OK_Click(object sender, RoutedEventArgs e)
         {
 
         }
     }
-   
 }

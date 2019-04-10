@@ -36,7 +36,7 @@
         <TextBlock Grid.Row="2">Flight info Port:</TextBlock>
         <TextBox x:Name="txtCommandPort" Grid.Column="1" Grid.Row="3" Text="{Binding VM_FlightCommandPort,Mode=OneWay}"></TextBox>
         <TextBlock Grid.Row="3">Flight Command Port:</TextBlock>
-        <Button x:Name="btnOK" Click="btnOk_Click" Margin="84,15.333,158.333,-38" Grid.ColumnSpan="2" Grid.Row="5" >OK
+        <Button x:Name="btnOK" Click="BtnOK_Click" Margin="84,15.333,158.333,-38" Grid.ColumnSpan="2" Grid.Row="5" >OK
             <Button.Background>
                 <LinearGradientBrush>
                     <GradientStop Color="LightBlue" Offset="0"/>
@@ -45,7 +45,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="btnCancle" Click="btnCancle_Click" Margin="32.333,15.333,75.333,-38" Grid.Row="5" RenderTransformOrigin="1.974,0.514" Grid.Column="1">Cancle
+        <Button x:Name="btnCancle" Click="BtnCancle_Click"  Margin="32.333,15.333,75.333,-38" Grid.Row="5" RenderTransformOrigin="1.974,0.514" Grid.Column="1">Cancle
         <Button.Background>
             <LinearGradientBrush>
                     <GradientStop Color="LightBlue" Offset="0"/>
