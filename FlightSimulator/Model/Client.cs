@@ -13,10 +13,10 @@ namespace FlightSimulator.Model
 {
     class Client : IClient
     {
-        
+       
         public void Connect(string ip, int port)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Disconnect()

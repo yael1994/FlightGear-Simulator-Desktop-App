@@ -2,6 +2,6 @@
 {
     internal interface IServer
     {
-        void Start(int port);
+        void Start();
     }
 }

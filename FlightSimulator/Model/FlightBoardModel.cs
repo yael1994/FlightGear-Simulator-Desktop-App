@@ -61,9 +61,10 @@ namespace FlightSimulator.Model
 
         public void Connect()
         {
-            server = new Server();
-           ISettingsModel model = ApplicationSettingsModel.Instance;
-            server.Start(model.FlightInfoPort);
+            ISettingsModel model = ApplicationSettingsModel.Instance;
+            server = new Server(model.FlightInfoPort);
+      
+            server.Start();
         //    client.Connect(model.FlightServerIP, model.FlightCommandPort);
         }
 
