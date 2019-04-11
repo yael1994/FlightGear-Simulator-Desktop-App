@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Model.Interface
 {
-    interface IFlightModel: INotifyPropertyChanged
+    interface IFlightModel
     {
         void Connect();
         void Setting();

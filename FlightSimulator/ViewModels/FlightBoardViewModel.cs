@@ -14,18 +14,25 @@ namespace FlightSimulator.ViewModels
     {
         private IFlightModel model;
         private Setting settingWindow;
+
+
         public FlightBoardViewModel()
         {
             model = new FlightBoardModel();
+            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
+            {
+                NotifyPropertyChanged(e.PropertyName);
+
+            };
         }
         public double Lon
         {
-            get;
+            get { return model.Lon; }
         }
 
         public double Lat
         {
-            get;
+            get { return model.Lat; }
         }
 
 
