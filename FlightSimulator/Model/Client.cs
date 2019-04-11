@@ -13,36 +13,26 @@ namespace FlightSimulator.Model
 {
     class Client : IClient
     {
-        IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
-        TcpClient m_client = new TcpClient();
-
         
-
         public void Connect(string ip, int port)
         {
-            m_client.Connect(ep);
-            //TODO: delete this
-            Console.WriteLine("You are connected");
+            throw new NotImplementedException();
         }
 
         public void Disconnect()
         {
-            m_client.Close();
+            throw new NotImplementedException();
         }
 
         public string Read()
         {
-        // Get result from server
-        int result = reader.ReadInt32();
-        Console.WriteLine("Result = {0}", result);
-    }
+            throw new NotImplementedException();
+        }
 
         public void Write(string command)
         {
-        Console.Write("Please enter a number: ");
-        int num = int.Parse(Console.ReadLine());
-        writer.Write(num);
-    }
+            throw new NotImplementedException();
+        }
     }
 }
 

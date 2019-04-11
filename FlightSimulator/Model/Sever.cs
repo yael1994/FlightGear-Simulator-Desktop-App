@@ -16,9 +16,6 @@ namespace FlightSimulator.Model
         private TcpClient m_client;
         private IPEndPoint ep;
         private IClientHandler ch;
-        private NetworkStream strean;
-        private BinaryReader reader;
-        private BinaryWriter writer;
 
         public Server(int port)
         {
@@ -38,9 +35,11 @@ namespace FlightSimulator.Model
                         TcpClient client = listener.AcceptTcpClient();
                         Console.WriteLine("Got new connection");           
                         ch.HandleClient(client);
+                        client.Close();
                     }
                     catch (SocketException)
                     {
+                        
                         break;
                     }
                 }
@@ -54,7 +53,5 @@ namespace FlightSimulator.Model
         }
 
     }
-
-    
     }
         
