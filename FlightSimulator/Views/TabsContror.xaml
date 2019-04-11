@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <TabControl>
         <TabItem Header="Manual">
-            <local:Manual></local:Manual>
+            <local:Manual2></local:Manual2>
         </TabItem>
         <TabItem Header="Auto Pilot">
             <local:Auto></local:Auto>
