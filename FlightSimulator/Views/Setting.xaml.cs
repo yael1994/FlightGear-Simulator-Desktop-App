@@ -21,10 +21,13 @@ namespace FlightSimulator.Views
     /// </summary>
     public partial class Setting : Window
     {
-        SettingsWindowViewModel vm;
+        SettingsWindowViewModel vm { get; }
+        public bool isOpen { get; set; }
+    
         public Setting()
         {
             InitializeComponent();
+            isOpen = true;
             vm = new SettingsWindowViewModel(new ApplicationSettingsModel());
             DataContext = vm;
         }

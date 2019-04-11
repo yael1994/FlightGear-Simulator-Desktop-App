@@ -26,9 +26,12 @@ namespace FlightSimulator.Views
     public partial class FlightBoard : UserControl
     {
         ObservableDataSource<Point> planeLocations = null;
+        FlightBoardViewModel vm;
         public FlightBoard()
         {
             InitializeComponent();
+            this.vm = new FlightBoardViewModel();
+            DataContext = vm;
         }
         
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
