@@ -22,7 +22,7 @@
                     <RotateTransform Angle="90"/>
                 </Label.LayoutTransform>
             </Label>
-        <Slider DockPanel.Dock="Left" Height="300" Orientation="Vertical" Minimum="-1" Maximum="1" TickFrequency="0.1" TickPlacement="BottomRight" ValueChanged="Slider_ValueChanged_1" RenderTransformOrigin="0.513,0.199" Foreground="#FF393535">
+        <Slider x:Name="throttleSlider" DockPanel.Dock="Left" Height="300" Orientation="Vertical" Minimum="-1" Maximum="1" TickFrequency="0.1" TickPlacement="BottomRight" ValueChanged="Slider_ValueChanged_1" RenderTransformOrigin="0.513,0.199" Foreground="#FF393535">
         </Slider>
         <Label DockPanel.Dock="Right" VerticalAlignment="Center" Content="← elevator →">
             <Label.LayoutTransform>
@@ -32,7 +32,7 @@
         
         <DockPanel>
             <Label DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="← rudder →"/>
-            <Slider DockPanel.Dock="Bottom" Width="300" VerticalAlignment="Bottom"  Orientation="Horizontal" Minimum="-1" Maximum="1" TickFrequency="0.1" TickPlacement="BottomRight" ValueChanged="Slider_ValueChanged" Foreground="#FF393535"/>
+            <Slider x:Name="rudderSlider" DockPanel.Dock="Bottom" Width="300" VerticalAlignment="Bottom"  Orientation="Horizontal" Minimum="-1" Maximum="1" TickFrequency="0.1" TickPlacement="BottomRight" ValueChanged="Slider_ValueChanged" Foreground="#FF393535"/>
             <local:Joystick Height="400" DockPanel.Dock="Top" Margin="10,-20,30,0"/>
         </DockPanel>
     </DockPanel>
