@@ -1,5 +1,5 @@
 ﻿using FlightSimulator.Model;
-using FlightSimulator.ViewModels;
+using FlightSimulator.ViewModels.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,22 +21,12 @@ namespace FlightSimulator.Views
     /// </summary>
     public partial class Setting : Window
     {
-        ApplicationSettingViewModel vm;
+        SettingsWindowViewModel vm;
         public Setting()
         {
             InitializeComponent();
-            vm = new ApplicationSettingViewModel(new ApplicationSettingsModel());
+            vm = new SettingsWindowViewModel(new ApplicationSettingsModel());
             DataContext = vm;
-        }
-
-        private void BtnCancle_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnOK_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
    

@@ -88,7 +88,6 @@
     <Compile Include="Model\EventArgs\VirtualJoystickEventArgs.cs" />
     <Compile Include="Model\Interface\IClient.cs" />
     <Compile Include="Model\Interface\ISettingsModel.cs" />
-    <Compile Include="ViewModels\ApplicationSettingViewModel.cs.cs" />
     <Compile Include="ViewModels\BaseNotify.cs" />
     <Compile Include="ViewModels\FlightBoardViewModel.cs" />
     <Compile Include="ViewModels\Windows\SettingsWindowViewModel.cs" />

@@ -12,7 +12,15 @@
         <Style TargetType="Button">
             <Setter Property="FontSize"
               Value="11" />
-         
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush>
+                        <GradientStop Color="LightBlue" Offset="0"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                        <GradientStop Color="LightBlue" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
 
@@ -30,29 +38,17 @@
             <ColumnDefinition Width="*"/>
 
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="txtIP" Grid.Column="1" Grid.Row="1" Text="{Binding VM_FlightServerIP,Mode=OneWay}"></TextBox>
+        <TextBox x:Name="txtIP" Grid.Column="1" Grid.Row="1" Text="{Binding VM_FlightServerIP,UpdateSourceTrigger=Explicit}"></TextBox>
         <TextBlock Grid.Row="1">Flight Server IP:</TextBlock>
-        <TextBox x:Name="txtPort" Grid.Column="1" Grid.Row="2" Text="{Binding VM_FlightInfoPort,Mode=OneWay}"></TextBox>
+        <TextBox x:Name="txtPort" Grid.Column="1" Grid.Row="2" Text="{Binding VM_FlightInfoPort,UpdateSourceTrigger=Explicit}"></TextBox>
         <TextBlock Grid.Row="2">Flight info Port:</TextBlock>
-        <TextBox x:Name="txtCommandPort" Grid.Column="1" Grid.Row="3" Text="{Binding VM_FlightCommandPort,Mode=OneWay}"></TextBox>
+        <TextBox x:Name="txtCommandPort" Grid.Column="1" Grid.Row="3" Text="{Binding VM_FlightCommandPort,UpdateSourceTrigger=Explicit}"></TextBox>
         <TextBlock Grid.Row="3">Flight Command Port:</TextBlock>
-        <Button x:Name="btnOK" Click="BtnOK_Click" Margin="84,15.333,158.333,-38" Grid.ColumnSpan="2" Grid.Row="5" >OK
-            <Button.Background>
-                <LinearGradientBrush>
-                    <GradientStop Color="LightBlue" Offset="0"/>
-                    <GradientStop Color="White" Offset="0.5"/>
-                    <GradientStop Color="LightBlue" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
+        <Button x:Name="btnOK" Command="{Binding ClickCommand}" Margin="84,15.333,158.333,-38" Grid.ColumnSpan="2" Grid.Row="5" >OK
+            
         </Button>
-        <Button x:Name="btnCancle" Click="BtnCancle_Click"  Margin="32.333,15.333,75.333,-38" Grid.Row="5" RenderTransformOrigin="1.974,0.514" Grid.Column="1">Cancle
-        <Button.Background>
-            <LinearGradientBrush>
-                    <GradientStop Color="LightBlue" Offset="0"/>
-                    <GradientStop Color="White" Offset="0.5"/>
-                    <GradientStop Color="LightBlue" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
+        <Button x:Name="btnCancle" Command="{Binding CancleCommand}" Margin="32.333,15.333,75.333,-38" Grid.Row="5" RenderTransformOrigin="1.974,0.514" Grid.Column="1">Cancle
+     
         </Button>
     </Grid>
 </Window>
