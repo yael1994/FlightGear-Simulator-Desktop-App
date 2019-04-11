@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:FlightSimulator.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Viewbox>
-        <TabControl>
+    <TabControl>
         <TabItem Header="Manual">
             <local:Manual2></local:Manual2>
         </TabItem>
