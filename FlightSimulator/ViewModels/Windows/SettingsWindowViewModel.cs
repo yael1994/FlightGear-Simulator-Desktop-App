@@ -1,11 +1,13 @@
 ﻿using FlightSimulator.Model;
 using FlightSimulator.Model.Interface;
+using FlightSimulator.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace FlightSimulator.ViewModels.Windows
@@ -13,6 +15,7 @@ namespace FlightSimulator.ViewModels.Windows
     public class SettingsWindowViewModel : BaseNotify
     {
         private ISettingsModel model;
+        public Setting settingWindow;
 
         public SettingsWindowViewModel(ISettingsModel model)
         {
@@ -73,8 +76,12 @@ namespace FlightSimulator.ViewModels.Windows
         }
         private void OnClick()
         {
-            
+            settingWindow.txtCommandPort.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            settingWindow.txtIP.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            settingWindow.txtPort.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             model.SaveSettings();
+            settingWindow.isOpen = false;
+            settingWindow.Close();
         }
         #endregion
 
@@ -89,7 +96,9 @@ namespace FlightSimulator.ViewModels.Windows
         }
         private void OnCancel()
         {
+            //settingWindow.isOpen = false;
             model.ReloadSettings();
+            //settingWindow.Close();
         }
         #endregion
         #endregion
