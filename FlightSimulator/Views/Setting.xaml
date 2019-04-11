@@ -41,9 +41,9 @@
         <TextBlock Text="Flight Info Port :" Grid.Row="1" Grid.Column="0" Margin="5"/>
         <TextBlock Text="Flight Command Port :" Grid.Row="2" Grid.Column="0" Margin="5"/>
 
-        <TextBox Name="txtIP" Grid.Row="0" Grid.Column="1" Margin="0,5,10,5" Text="{Binding VM_FlightServerIP, UpdateSourceTrigger=Explicit}"/>
-        <TextBox Name="txtPort" Grid.Row="1" Grid.Column="1" Margin="0,5,10,5" Text="{Binding VM_FlightInfoPort, UpdateSourceTrigger=Explicit}"/>
-        <TextBox Name="txtCommandPort" Grid.Row="2" Grid.Column="1" Margin="0,5,10,5" Text="{Binding VM_FlightCommandPort, UpdateSourceTrigger=Explicit}"/>
+        <TextBox Name="txtIP" Grid.Row="0" Grid.Column="1" Margin="0,5,10,5" Text="{Binding FlightServerIP,UpdateSourceTrigger=Explicit}"/>
+        <TextBox Name="txtPort" Grid.Row="1" Grid.Column="1" Margin="0,5,10,5" Text="{Binding FlightInfoPort, UpdateSourceTrigger=Explicit}"/>
+        <TextBox Name="txtCommandPort" Grid.Row="2" Grid.Column="1" Margin="0,5,10,5" Text="{Binding FlightCommandPort, UpdateSourceTrigger=Explicit}"/>
 
         <Button Name="btnOK" Content="  OK  " Click="BtnOK_Click" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Margin="0,10,8,0" />
         <Button Name="btnCancle" Content="Cancel" Click="BtnCancle_Click" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="8,10,0,0"/>

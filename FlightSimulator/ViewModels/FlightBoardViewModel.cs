@@ -41,11 +41,11 @@ namespace FlightSimulator.ViewModels
         }
         private void OnSetting()
         {
-            if (settingWindow == null)
+            if (settingWindow == null|| !settingWindow.isOpen)
             {
                 settingWindow = new Setting();
-            }
                 settingWindow.Show();
+            }
         
         }
         #endregion
