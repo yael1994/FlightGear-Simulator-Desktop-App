@@ -23,7 +23,7 @@ namespace FlightSimulator.Views
     {
         SettingsWindowViewModel vm { get; }
         public bool isOpen { get; set; }
-    
+
         public Setting()
         {
             InitializeComponent();
@@ -31,6 +31,22 @@ namespace FlightSimulator.Views
             vm = new SettingsWindowViewModel(new ApplicationSettingsModel());
             DataContext = vm;
         }
+
+        private void BtnOK_Click(object sender, RoutedEventArgs e)
+        {
+            txtCommandPort.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            txtIP.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            txtPort.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            vm.SaveSettings();
+            this.isOpen = false;
+            this.Close();
+        }
+
+        private void BtnCancle_Click(object sender, RoutedEventArgs e)
+        {
+            this.isOpen = false;
+            vm.ReloadSettings();
+            this.Close();
+        }
     }
-   
 }
