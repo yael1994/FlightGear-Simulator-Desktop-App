@@ -30,7 +30,7 @@ namespace FlightSimulator.ViewModels
 
 
         #region Commands
-        #region ClickCommand
+        #region SettingCommand
         private ICommand _settingCommand;
         public ICommand SettingsCommand
         {
@@ -50,7 +50,7 @@ namespace FlightSimulator.ViewModels
         }
         #endregion
 
-        #region CancelCommand
+        #region ConnectCommand
         private ICommand _connectCommand;
         public ICommand ConnectCommand
         {

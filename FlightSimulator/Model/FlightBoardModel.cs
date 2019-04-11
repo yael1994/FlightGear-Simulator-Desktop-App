@@ -11,10 +11,15 @@ namespace FlightSimulator.Model
     class FlightBoardModel : IFlightModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        
+        private IServer server;
+        private IClient client;
 
         public void Connect()
         {
-            throw new NotImplementedException();
+           ISettingsModel model = ApplicationSettingsModel.Instance;
+            server.Start(model.FlightInfoPort);
+            client.Connect(model.FlightServerIP, model.FlightCommandPort);
         }
 
         public void DrawRoud()

@@ -15,17 +15,14 @@ namespace FlightSimulator.Model
         private TcpListener listener;
         private TcpClient m_client;
         private IPEndPoint ep;
-        private IClientHandler ch;
+        private IClientHandler<string[]> ch;
 
-        public Server(int port)
+       
+    
+        public void Start(int port)
         {
             ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
             ch = new ClientHandler();
-           
-        }
-
-        public void Start()
-        {
             listener = new TcpListener(ep);
             listener.Start();            Console.WriteLine("Waiting for connections...");            Thread thread = new Thread(() => {
                 while (true)
