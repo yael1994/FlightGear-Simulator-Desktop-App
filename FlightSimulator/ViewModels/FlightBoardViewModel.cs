@@ -16,7 +16,7 @@ namespace FlightSimulator.ViewModels
         private Setting settingWindow;
         public FlightBoardViewModel()
         {
-         
+            model = new FlightBoardModel();
         }
         public double Lon
         {
