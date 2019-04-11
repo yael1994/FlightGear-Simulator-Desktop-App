@@ -10,15 +10,17 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Model
 {
-    class Server
+    class Server:IServer
     {
         private TcpListener listener;
         private TcpClient m_client;
         private IPEndPoint ep;
         private IClientHandler<string[]> ch;
 
-       
-    
+        public Server()
+        {
+        }
+
         public void Start(int port)
         {
             ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);

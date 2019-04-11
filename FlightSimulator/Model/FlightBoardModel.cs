@@ -17,9 +17,10 @@ namespace FlightSimulator.Model
 
         public void Connect()
         {
+            server = new Server();
            ISettingsModel model = ApplicationSettingsModel.Instance;
             server.Start(model.FlightInfoPort);
-            client.Connect(model.FlightServerIP, model.FlightCommandPort);
+        //    client.Connect(model.FlightServerIP, model.FlightCommandPort);
         }
 
         public void DrawRoud()
