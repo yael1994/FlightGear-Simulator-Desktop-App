@@ -19,11 +19,6 @@ namespace FlightSimulator.ViewModels
         public FlightBoardViewModel()
         {
             model = new FlightBoardModel();
-            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
-            {
-                NotifyPropertyChanged(e.PropertyName);
-
-            };
         }
         public double Lon
         {

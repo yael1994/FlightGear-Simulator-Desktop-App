@@ -13,10 +13,14 @@ namespace FlightSimulator.Model
 {
     class Client : IClient
     {
-       
+        private TcpClient tcpClient;
+       public Client() { }
+
         public void Connect(string ip, int port)
         {
-            
+            tcpClient = new TcpClient();
+            tcpClient.Connect(ip,port);
+        
         }
 
         public void Disconnect()
@@ -31,7 +35,20 @@ namespace FlightSimulator.Model
 
         public void Write(string command)
         {
-            throw new NotImplementedException();
+            NetworkStream stream = tcpClient.GetStream();
+            Byte[] buffer = new byte[1024];
+            buffer = Encoding.ASCII.GetBytes(command);
+            stream.Write(buffer, 0, buffer.Length);
+
+            Byte[] data = new Byte[256];
+
+            // String to store the response ASCII representation.
+            String responseData = String.Empty;
+
+            // Read the first batch of the TcpServer response bytes.
+            Int32 bytes = stream.Read(data, 0, data.Length);
+            responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+            Console.WriteLine("Received: {0}", responseData);
         }
     }
 }
