@@ -7,9 +7,21 @@
         xmlns:views= "clr-namespace:FlightSimulator.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Viewbox>
-        <views:TabsContror>
-        </views:TabsContror>
-       
-    </Viewbox>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <views:FlightBoard Grid.Row="1" Grid.Column="0"/>
+
+        <views:TabsContror Grid.Row="1" Grid.Column="1"/>
+        <TextBlock Name="Header" Grid.Row="0" Grid.ColumnSpan="2" Text="Flight Simulator" HorizontalAlignment="Center" FontSize="36" Margin="0,0,0,5" Foreground="#FFAC40DB" FontFamily="Showcard Gothic" />
+
+    </Grid>
+    
+   
 </Window>

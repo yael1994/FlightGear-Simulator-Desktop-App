@@ -73,6 +73,7 @@ namespace FlightSimulator.ViewModels.Windows
         }
         private void OnClick()
         {
+            
             model.SaveSettings();
         }
         #endregion
