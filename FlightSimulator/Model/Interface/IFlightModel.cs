@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightSimulator.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,8 +10,10 @@ namespace FlightSimulator.Model.Interface
 {
     interface IFlightModel
     {
+        double Lon { get; set; }
+        double Lat { get; set; }
+
         void Connect();
-        void Setting();
         void DrawRoud();
     }
 }

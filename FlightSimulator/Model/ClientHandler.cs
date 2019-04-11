@@ -25,6 +25,9 @@ namespace FlightSimulator.Model
                 } while (stream.DataAvailable);
             }
             String myString = myCompleteMessage.ToString();
+            Console.Write(myString);
+            stream.Write(myReadBuffer, 0, myReadBuffer.Length);
+            stream.Flush();
             string [] values = myString.Split(',');
             return values;
         }

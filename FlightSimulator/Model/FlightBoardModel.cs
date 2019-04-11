@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Model
 {
-    class FlightBoardModel : IFlightModel
+    class FlightBoardModel 
     {
         private FlightBoardViewModel flightVM;
         private IServer server;
         private IClient client;
+        public event PropertyChangingEventHandler PropertyChanging;
 
         private double lon = 0;
         public double Lon
@@ -30,6 +31,8 @@ namespace FlightSimulator.Model
         }
 
         private double lat;
+
+
         public double Lat
         {
             get
@@ -42,22 +45,6 @@ namespace FlightSimulator.Model
                 NotifyPropertyChanged("Lat");
             }
         }
-        public void StartRead(String ip, int port)
-        {
-            server.openServer(ip, port);
-            new Thread(delegate ()
-            {
-                while (true)
-                {
-                    String[] data = server.readFromClient();
-                    Lon = Convert.ToDouble(data[0]);
-                    Lat = Convert.ToDouble(data[1]);
-                    Console.WriteLine("from client:1:" + lon);
-                    Console.WriteLine("from client:2:" + lat);
-                }
-            }).Start();
-        }
-
 
         public void Connect()
         {
@@ -72,9 +59,6 @@ namespace FlightSimulator.Model
         {
             throw new NotImplementedException();
         }
-        public void Setting()
-        {
-           
-        }
+               
     }
 }
