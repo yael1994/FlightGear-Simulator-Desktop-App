@@ -1,4 +1,5 @@
 ﻿using FlightSimulator.Model.Interface;
+using FlightSimulator.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,12 +9,42 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Model
 {
-    class FlightBoardModel : IFlightModel
+    class FlightBoardModel 
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        
+        private FlightBoardViewModel flightVM;
         private IServer server;
         private IClient client;
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        private double lon = 0;
+        public double Lon
+        {
+            get
+            {
+                return lon;
+            }
+            set
+            {
+                lon = value;
+                NotifyPropertyChanged("Lon");
+            }
+        }
+
+        private double lat;
+
+
+        public double Lat
+        {
+            get
+            {
+                return lat;
+            }
+            set
+            {
+                lat = value;
+                NotifyPropertyChanged("Lat");
+            }
+        }
 
         public void Connect()
         {
@@ -28,9 +59,6 @@ namespace FlightSimulator.Model
         {
             throw new NotImplementedException();
         }
-        public void Setting()
-        {
-           
-        }
+               
     }
 }

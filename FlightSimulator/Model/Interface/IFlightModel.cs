@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightSimulator.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Model.Interface
 {
-    interface IFlightModel: INotifyPropertyChanged
+    interface IFlightModel
     {
+        double Lon { get; set; }
+        double Lat { get; set; }
+
         void Connect();
-        void Setting();
         void DrawRoud();
     }
 }
