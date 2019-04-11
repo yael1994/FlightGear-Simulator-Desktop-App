@@ -9,7 +9,7 @@
     <Viewbox>
         <DockPanel>
             <Grid DockPanel.Dock="Bottom">
-                <Button Name="OK" Content="OK" Margin="100,10,214,10" Click="OK_Click">
+                <Button Name="OK" Content="OK" Command="{Binding OKCommand}" Margin="100,10,214,10" >
                     <Button.Background>
                         <LinearGradientBrush>
                             <GradientStop Color="LightBlue" Offset="0"/>
@@ -28,7 +28,8 @@
                 </Button.Background>
                 </Button>
             </Grid>
-            <TextBox x:Name="TextBox" Height="300" Width="350">
+            <TextBox x:Name="TextBox" TextWrapping="Wrap"
+AcceptsReturn="True"  Height="300" Width="350" Text="{Binding Path=TextToSend}">
                 <TextBox.Style>
                     <Style TargetType="{x:Type TextBox}">
                         <Setter Property="Background" Value="Pink"/>
