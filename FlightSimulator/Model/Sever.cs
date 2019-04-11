@@ -13,7 +13,7 @@ namespace FlightSimulator.Model
     class Server:IServer
     {
         private TcpListener listener;
-        private TcpClient m_client;
+        private TcpClient client;
         private IPEndPoint ep;
         private IClientHandler<string[]> ch;
 
@@ -27,33 +27,15 @@ namespace FlightSimulator.Model
 
         public void Start()
         {
-                        Console.WriteLine("Waiting for connections...");            Thread thread = new Thread(() => {
-                while (true)
-                {
-                    try
-                    {
-                        TcpClient client = listener.AcceptTcpClient();
-                        Console.WriteLine("Got new connection");
-                        while (true)
-                        {
-                            Read(client);
-                        }
-                       
-                    }
-                    catch (SocketException)
-                    {
-                        
-                        break;
-                    }
-                }
-                Console.WriteLine("Server stopped");
-            });
-            thread.Start();
-        }
+                        Console.WriteLine("Waiting for connections...");
+                     client = listener.AcceptTcpClient();
+                    Console.WriteLine("Got new connection");
+            }
+        
 
-        public void Read(TcpClient client)
+        public string [] Read()
         {
-            
+         
             NetworkStream stream = client.GetStream();
             // Buffer to store the response bytes.
            Byte[] data = new Byte[256];
@@ -65,8 +47,8 @@ namespace FlightSimulator.Model
             Int32 bytes = stream.Read(data, 0, data.Length);
             responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
             Console.WriteLine("Received: {0}", responseData);
-
-            Byte[] send = System.Text.Encoding.ASCII.GetBytes("rec");
+            string[] retStr = responseData.Split(',');
+           
 
             // Get a client stream for reading and writing.
             //  Stream stream = client.GetStream();
@@ -74,12 +56,14 @@ namespace FlightSimulator.Model
            
 
             // Send the message to the connected TcpServer. 
-            stream.Write(data, 0, data.Length);
+           // stream.Write(data, 0, data.Length);
 
-            Console.WriteLine("Sent: {0}","rec");
-
+           
+            return retStr;
+            
 
         }
+        //To close the Accept Blocker
         public void Stop()
         {
             listener.Stop();

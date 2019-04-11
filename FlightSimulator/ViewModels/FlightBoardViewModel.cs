@@ -12,25 +12,22 @@ namespace FlightSimulator.ViewModels
 {
     public class FlightBoardViewModel : BaseNotify
     {
+        private IFlightModel model;
         private Setting settingWindow;
 
-        private double lon;
-        private double lat;
 
         public FlightBoardViewModel()
         {
-            this.lon = 0;
-            this.lat = 0;
+            model = new FlightBoardModel();
         }
-        
         public double Lon
         {
-            get;
+            get { return model.Lon; }
         }
 
         public double Lat
         {
-            get;
+            get { return model.Lat; }
         }
 
 
