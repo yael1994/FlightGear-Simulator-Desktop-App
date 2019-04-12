@@ -93,7 +93,6 @@
     <Compile Include="Model\EventArgs\VirtualJoystickEventArgs.cs" />
     <Compile Include="Model\FlightBoardModel.cs" />
     <Compile Include="Model\Interface\IClient.cs" />
-    <Compile Include="Model\Interface\IFlightModel.cs" />
     <Compile Include="Model\Interface\ISettingsModel.cs" />
     <Compile Include="ViewModels\BaseNotify.cs" />
     <Compile Include="ViewModels\AutoPilotViewModel.cs" />
