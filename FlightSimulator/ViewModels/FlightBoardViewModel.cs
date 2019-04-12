@@ -3,6 +3,7 @@ using FlightSimulator.Model.Interface;
 using FlightSimulator.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +13,18 @@ namespace FlightSimulator.ViewModels
 {
     public class FlightBoardViewModel : BaseNotify
     {
-        private IFlightModel model;
+        private FlightBoardModel model;
         private Setting settingWindow;
 
 
         public FlightBoardViewModel()
         {
-            model = new FlightBoardModel();
+            model =new FlightBoardModel();
+            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
+           {
+              NotifyPropertyChanged(e.PropertyName);
+
+            };
         }
         public double Lon
         {

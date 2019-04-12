@@ -10,17 +10,12 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Model
 {
-    class FlightBoardModel : IFlightModel
+    class FlightBoardModel : BaseNotify
     {
         private FlightBoardViewModel flightVM;
         private IServer server;
         private IClient client;
-        private Boolean isStop;
         public event PropertyChangingEventHandler PropertyChanging;
-
-        public FlightBoardModel()
-        {
-        }
 
         private double lon = 0;
         public double Lon
@@ -29,10 +24,10 @@ namespace FlightSimulator.Model
             {
                 return lon;
             }
-            set
+            private set
             {
                 lon = value;
-                
+                NotifyPropertyChanged("Lon");
             }
         }
 
@@ -45,10 +40,10 @@ namespace FlightSimulator.Model
             {
                 return lat;
             }
-            set
+            private set
             {
                 lat = value;
-                
+                NotifyPropertyChanged("Lat");
             }
         }
 
@@ -73,12 +68,6 @@ namespace FlightSimulator.Model
             thread.Start();*/
             client = Client.getInstance();
             client.Connect(model.FlightServerIP, model.FlightCommandPort);
-        }
-
-        public void DrawRoud()
-        {
-            throw new NotImplementedException();
-        }
-               
+        }       
     }
 }
