@@ -38,7 +38,7 @@ namespace FlightSimulator.Model
            
                 try
                 {
-                Console.Write("trying to connect..");
+                Console.WriteLine("trying to connect..");
                 tcpClient.Connect(ip, port);
                 }
                 catch(SocketException e)
@@ -47,7 +47,7 @@ namespace FlightSimulator.Model
                     
                 }
                 isConnect = true;
-                Console.Write("new Connection");
+                Console.WriteLine("new Connection");
              stream = tcpClient.GetStream();
              writer = new BinaryWriter(stream);
 

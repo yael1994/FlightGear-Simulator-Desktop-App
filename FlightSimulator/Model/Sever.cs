@@ -22,7 +22,7 @@ namespace FlightSimulator.Model
             ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
             ch = new ClientHandler();
             listener = new TcpListener(ep);
-            listener.Start();
+           // listener.Start();
         }
 
         public void Start()
@@ -46,7 +46,7 @@ namespace FlightSimulator.Model
             // Read the first batch of the TcpServer response bytes.
             Int32 bytes = stream.Read(data, 0, data.Length);
             responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-            Console.WriteLine("Received: {0}", responseData);
+            //Console.WriteLine("Received: {0}", responseData);
             string[] retStr = responseData.Split(',');
            
 
