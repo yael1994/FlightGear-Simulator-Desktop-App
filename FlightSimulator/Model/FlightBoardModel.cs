@@ -52,9 +52,10 @@ namespace FlightSimulator.Model
         {
             ISettingsModel model = ApplicationSettingsModel.Instance;
             server = new Server(model.FlightInfoPort);
+            server.Start();
             Thread thread = new Thread(() =>
             {
-                server.Start();
+                
                 while (true)
                 {
                     string [] values = server.Read();
@@ -66,6 +67,7 @@ namespace FlightSimulator.Model
                 }
             });
             thread.Start();
+            client = Client.getInstance();
             client.Connect(model.FlightServerIP, model.FlightCommandPort);
         }
 

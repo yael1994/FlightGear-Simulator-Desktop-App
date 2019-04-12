@@ -14,13 +14,44 @@ namespace FlightSimulator.Model
     class Client : IClient
     {
         private TcpClient tcpClient;
-       public Client() { }
+        private static Client instance = null;
+       private NetworkStream stream;
+        private BinaryWriter writer;
+        private Client() {}
+         
+        
 
+        public static Client getInstance()
+        {
+
+            if(instance == null)
+            {
+                instance = new Client();
+            }
+            return instance;
+        }
+        
         public void Connect(string ip, int port)
         {
+            bool isConnect = false;
             tcpClient = new TcpClient();
-            tcpClient.Connect(ip,port);
-        
+           
+                try
+                {
+                Console.Write("trying to connect..");
+                tcpClient.Connect(ip, port);
+                }
+                catch(SocketException e)
+                {
+                    
+                    
+                }
+                isConnect = true;
+                Console.Write("new Connection");
+             stream = tcpClient.GetStream();
+             writer = new BinaryWriter(stream);
+
+
         }
 
         public void Disconnect()
@@ -33,22 +64,32 @@ namespace FlightSimulator.Model
             throw new NotImplementedException();
         }
 
-        public void Write(string command)
+        public void Write(string  command)
         {
-            NetworkStream stream = tcpClient.GetStream();
+            Console.Write("Starting TO write...");
+            string [] lines = command.Split('\n');
+            
             Byte[] buffer = new byte[1024];
-            buffer = Encoding.ASCII.GetBytes(command);
-            stream.Write(buffer, 0, buffer.Length);
+            for (int i = 0; i < lines.Length; i++)
+            {
+                buffer = Encoding.ASCII.GetBytes(lines[i]);
 
-            Byte[] data = new Byte[256];
+                writer.Write(lines[i] + "\r\n");
+                
 
-            // String to store the response ASCII representation.
-            String responseData = String.Empty;
+                //check the pilot response
+                Byte[] data = new Byte[256];
 
-            // Read the first batch of the TcpServer response bytes.
-            Int32 bytes = stream.Read(data, 0, data.Length);
-            responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-            Console.WriteLine("Received: {0}", responseData);
+                // String to store the response ASCII representation.
+                String responseData = String.Empty;
+
+                // Read the first batch of the TcpServer response bytes.
+                Int32 bytes = stream.Read(data, 0, data.Length);
+                responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+                Console.WriteLine("Received: {0}", responseData);
+                
+            }
+            Array.Clear(lines, 0, lines.Length);
         }
     }
 }
