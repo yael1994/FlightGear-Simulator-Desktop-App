@@ -51,21 +51,23 @@ namespace FlightSimulator.Model
         {
             ISettingsModel model = ApplicationSettingsModel.Instance;
             server = new Server(model.FlightInfoPort);
-          /* server.Start();
+           server.Start();
             Thread thread = new Thread(() =>
             {
                 
                 while (true)
                 {
                     string [] values = server.Read();
+                    if(!values[0].Equals(""))
                     Lon = Double.Parse(values[0]);
-                    Lat = Double.Parse(values[1]);
+                    if (!values[1].Equals(""))
+                        Lat = Double.Parse(values[1]);
 
                  //   Console.WriteLine(Lon);
                    // Console.WriteLine(Lat);
                 }
             });
-            thread.Start();*/
+            thread.Start();
             client = Client.getInstance();
             client.Connect(model.FlightServerIP, model.FlightCommandPort);
         }       
