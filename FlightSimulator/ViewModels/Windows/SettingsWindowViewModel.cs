@@ -16,12 +16,10 @@ namespace FlightSimulator.ViewModels.Windows
     {
         private ISettingsModel model;
         public Action CloseAction { get; set; }
-        public bool isOpen { get; set; }
 
         public SettingsWindowViewModel(ISettingsModel model)
         {
             this.model = model;
-            isOpen = true;
         }
 
         public string FlightServerIP
@@ -78,7 +76,6 @@ namespace FlightSimulator.ViewModels.Windows
         }
         private void OkClick()
         {
-            isOpen = false;
             model.SaveSettings();
             CloseAction();
         }
@@ -97,7 +94,6 @@ namespace FlightSimulator.ViewModels.Windows
         }
         private void OnCancel()
         {
-            isOpen = false;
             model.ReloadSettings();
             CloseAction();
         }

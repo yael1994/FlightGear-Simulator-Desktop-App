@@ -24,6 +24,7 @@ namespace FlightSimulator.ViewModels
         private void OnOK()
         {
             Client.getInstance().Write(TextToSend);
+            
 
         }
     }
