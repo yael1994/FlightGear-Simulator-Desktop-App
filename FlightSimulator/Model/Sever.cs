@@ -22,7 +22,7 @@ namespace FlightSimulator.Model
             ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
             ch = new ClientHandler();
             listener = new TcpListener(ep);
-           // listener.Start();
+            listener.Start();
         }
 
         public void Start()
