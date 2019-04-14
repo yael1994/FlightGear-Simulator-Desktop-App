@@ -21,32 +21,15 @@ namespace FlightSimulator.Views
     /// </summary>
     public partial class Setting : Window
     {
-        SettingsWindowViewModel vm { get; }
-        public bool isOpen { get; set; }
-
+        public SettingsWindowViewModel vm { get; }
+        
         public Setting()
         {
             InitializeComponent();
-            isOpen = true;
             vm = new SettingsWindowViewModel(new ApplicationSettingsModel());
             DataContext = vm;
-        }
-
-        private void BtnOK_Click(object sender, RoutedEventArgs e)
-        {
-            txtCommandPort.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            txtIP.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            txtPort.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            vm.SaveSettings();
-            this.isOpen = false;
-            this.Close();
-        }
-
-        private void BtnCancle_Click(object sender, RoutedEventArgs e)
-        {
-            this.isOpen = false;
-            vm.ReloadSettings();
-            this.Close();
+            if (vm.CloseAction == null)
+                vm.CloseAction = new Action(() => this.Close());
         }
     }
 }
