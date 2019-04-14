@@ -73,9 +73,14 @@ namespace FlightSimulator.Model
             for (int i = 0; i < lines.Length; i++)
             {
                 buffer = Encoding.ASCII.GetBytes(lines[i]);
+                if (lines[i].EndsWith("\n"))
+                {
+                    lines[i].Remove(lines[i].Length-1);
+                }
+                string send = lines[i] + "\r\n";
+                Console.WriteLine("Sends: " + send);
+                writer.Write(System.Text.Encoding.ASCII.GetBytes(send));
 
-                writer.Write(lines[i] + "\r\n");
-                
 
                 //check the pilot response
                 Byte[] data = new Byte[256];
