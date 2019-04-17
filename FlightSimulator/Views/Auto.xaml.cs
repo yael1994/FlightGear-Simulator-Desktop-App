@@ -27,12 +27,19 @@ namespace FlightSimulator.Views
             InitializeComponent();
             autoPilotView = new AutoPilotViewModel();
             DataContext = autoPilotView;
-            
+            if (autoPilotView.WhiteBackgroundAction == null)
+            {
+                autoPilotView.WhiteBackgroundAction = new Action(() => TextBox.Background = Brushes.White);
+            }
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             this.TextBox.Clear();
+        }
+        private void TextBoxAuto_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox.Background = Brushes.Pink;
         }
     }
 }

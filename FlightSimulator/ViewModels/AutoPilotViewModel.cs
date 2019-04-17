@@ -12,6 +12,7 @@ namespace FlightSimulator.ViewModels
     class AutoPilotViewModel : BaseNotify
     {
         public string TextToSend { get; set; }
+        public Action WhiteBackgroundAction { get; set; }
 
         private ICommand _oKCommand;
         public ICommand OKCommand
@@ -23,6 +24,7 @@ namespace FlightSimulator.ViewModels
         }
         private void OnOK()
         {
+            WhiteBackgroundAction();
             Client.getInstance().Write(TextToSend);
             
 

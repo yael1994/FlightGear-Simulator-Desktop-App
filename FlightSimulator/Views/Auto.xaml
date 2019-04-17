@@ -6,41 +6,30 @@
              xmlns:local="clr-namespace:FlightSimulator.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Viewbox>
-        <DockPanel>
-            <Grid DockPanel.Dock="Bottom">
-                <Button Name="OK" Content="OK" Command="{Binding OKCommand}" Margin="100,10,214,10" >
-                    <Button.Background>
-                        <LinearGradientBrush>
-                            <GradientStop Color="LightBlue" Offset="0"/>
-                            <GradientStop Color="White" Offset="0.5"/>
-                            <GradientStop Color="LightBlue" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Button.Background>
-                </Button>
-                <Button Name="Clear" Content="Clear" Margin="206,10,102,10" Click="Clear_Click">
-                <Button.Background>
+
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize"
+              Value="11" />
+            <Setter Property="Background">
+                <Setter.Value>
                     <LinearGradientBrush>
                         <GradientStop Color="LightBlue" Offset="0"/>
                         <GradientStop Color="White" Offset="0.5"/>
                         <GradientStop Color="LightBlue" Offset="1"/>
                     </LinearGradientBrush>
-                </Button.Background>
-                </Button>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Viewbox>
+        <DockPanel>
+            <Grid DockPanel.Dock="Bottom">
+                <Button Name="OK" Content="OK" Command="{Binding OKCommand}" Margin="100,10,214,10" />
+                <Button Name="Clear" Content="Clear" Margin="206,10,102,10" Click="Clear_Click"/>
             </Grid>
-            <TextBox x:Name="TextBox" TextWrapping="Wrap"
-AcceptsReturn="True"  Height="300" Width="350" Text="{Binding Path=TextToSend}">
-                <TextBox.Style>
-                    <Style TargetType="{x:Type TextBox}">
-                        <Setter Property="Background" Value="Pink"/>
-                        <Style.Triggers>
-                            <Trigger Property="Text" Value="">
-                                <Setter Property="Background" Value="White"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBox.Style>
-            </TextBox>
+            <TextBox Name="TextBox" Text="{Binding Path=TextToSend}" Height="300" Width="350" AcceptsReturn="True" TextChanged="TextBoxAuto_TextChanged" />
         </DockPanel>
     </Viewbox>
 </UserControl>
