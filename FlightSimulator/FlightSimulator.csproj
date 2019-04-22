@@ -88,14 +88,17 @@
     <Compile Include="Model\ClientHandler.cs" />
     <Compile Include="Model\Interface\IClientHandler.cs" />
     <Compile Include="Model\Interface\IServer.cs" />
+    <Compile Include="Model\ManuelModel.cs" />
     <Compile Include="Model\Sever.cs" />
     <Compile Include="Model\CommandHandler.cs" />
     <Compile Include="Model\EventArgs\VirtualJoystickEventArgs.cs" />
     <Compile Include="Model\FlightBoardModel.cs" />
     <Compile Include="Model\Interface\IClient.cs" />
     <Compile Include="Model\Interface\ISettingsModel.cs" />
+    <Compile Include="Model\SymboleTable.cs" />
     <Compile Include="ViewModels\BaseNotify.cs" />
     <Compile Include="ViewModels\AutoPilotViewModel.cs" />
+    <Compile Include="ViewModels\ManualViewModel.cs" />
     <Compile Include="ViewModels\FlightBoardViewModel.cs" />
     <Compile Include="ViewModels\Windows\SettingsWindowViewModel.cs" />
     <Compile Include="Views\Auto.xaml.cs">

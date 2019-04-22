@@ -22,11 +22,11 @@ namespace FlightSimulator.Model
         {
             get
             {
-                return lon;
+                return SymboleTable.getInstance().Get("lon");
             }
             private set
             {
-                lon = value;
+                SymboleTable.getInstance().Set("lon", value);
                 NotifyPropertyChanged("Lon");
             }
         }
@@ -38,11 +38,13 @@ namespace FlightSimulator.Model
         {
             get
             {
-                return lat;
+                return SymboleTable.getInstance().Get("lat");
             }
             private set
             {
-                lat = value;
+              
+                
+                SymboleTable.getInstance().Set("lat", value);
                 NotifyPropertyChanged("Lat");
             }
         }
@@ -51,21 +53,21 @@ namespace FlightSimulator.Model
         {
             ISettingsModel model = ApplicationSettingsModel.Instance;
             server = new Server(model.FlightInfoPort);
-           server.Start();
+           
             Thread thread = new Thread(() =>
             {
-                
-                while (true)
+                server.Start();
+                /*while (true)
                 {
                     string [] values = server.Read();
-                    if(!values[0].Equals(""))
+                    if(!values[0].Equals("nan"))
                     Lon = Double.Parse(values[0]);
-                    if (!values[1].Equals(""))
+                    if (!values[1].Equals("nan"))
                         Lat = Double.Parse(values[1]);
 
-                 //   Console.WriteLine(Lon);
-                   // Console.WriteLine(Lat);
-                }
+                   Console.WriteLine(Lon);
+                    Console.WriteLine(Lat);
+                }*/
             });
             thread.Start();
             client = Client.getInstance();
