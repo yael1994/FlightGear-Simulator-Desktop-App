@@ -17,6 +17,7 @@ namespace FlightSimulator.Model
         private TcpClient client;
         private IPEndPoint ep;
         private IClientHandler<string[]> ch;
+        private BinaryReader reader;
         public static Server instance;
         public Server(int port)
         {
@@ -32,41 +33,59 @@ namespace FlightSimulator.Model
                         Console.WriteLine("Waiting for connections...");
                      client = listener.AcceptTcpClient();
                     Console.WriteLine("Got new connection");
-            Read();
+            reader = new BinaryReader(client.GetStream());
         }
         
 
-        public void Read()
+        public string [] Read()
         {
+                String buffer = "";
+                char c;
+                try
+                {
+                    c = reader.ReadChar();
+                }
+                catch
+                {
+                    Console.WriteLine("Reading from client failed");
+                    Stop();
+                return null;
+                   
+                }
 
-            while (true)
-            {
-                NetworkStream stream = client.GetStream();
-                // Buffer to store the response bytes.
-                Byte[] data = new Byte[256];
+                while (c != '\n')
+                {
+                    buffer += c;
+                    try
+                    {
+                        c = reader.ReadChar();
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Reading from client failed");
+                        Stop();
+                      return null;
+                }
 
-                // String to store the response ASCII representation.
-                String responseData = String.Empty;
+                }
 
-                // Read the first batch of the TcpServer response bytes.
-                Int32 bytes = stream.Read(data, 0, data.Length);
-                responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-                //Console.WriteLine("Received: {0}", responseData);
-                string[] retStr = responseData.Split(',');
+                string [] retStr = buffer.Split(',');
+            return retStr;
                 symboleTable.Set("rudder",Convert.ToDouble (retStr[21]));
                 symboleTable.Set("throttle", Convert.ToDouble(retStr[23]));
                 symboleTable.Set("aileron", Convert.ToDouble(retStr[19]));
                 symboleTable.Set("elevators", Convert.ToDouble(retStr[20]));
                 symboleTable.Set("lon", Convert.ToDouble(retStr[0]));
                 symboleTable.Set("lat", Convert.ToDouble(retStr[1]));
-         
+               
+                Thread.Sleep(500);
                 // Get a client stream for reading and writing.
                 //  Stream stream = client.GetStream();
                 // Send the message to the connected TcpServer. 
                 // stream.Write(data, 0, data.Length);
 
 
-            }
+            
             
 
         }

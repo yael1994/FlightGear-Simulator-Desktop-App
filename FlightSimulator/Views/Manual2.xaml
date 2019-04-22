@@ -15,7 +15,7 @@
     <DockPanel>
         <Grid DockPanel.Dock="Top">
             <Label x:Name="aileron" Content="← aileron →" HorizontalAlignment="Center" />
-            <TextBlock Name="aileronIndicator" Text="{Binding Aileron, StringFormat=N1}" DockPanel.Dock="Right" FontWeight="Bold" Margin="0,5,5,4.8" FontSize="14" Width="35"/>
+            <TextBlock Name="aileronIndicator" Text="{Binding Aileron, StringFormat=N1}" DockPanel.Dock="Right" HorizontalAlignment="Right" FontWeight="Bold" Margin="0,5,5,4.8" FontSize="14" Width="35"/>
         </Grid>
         <Label DockPanel.Dock="Left" VerticalAlignment="Center" Content="← throttle →">
             <Label.LayoutTransform>
@@ -23,7 +23,7 @@
             </Label.LayoutTransform>
         </Label>
         <Slider x:Name="throttleSlider" DockPanel.Dock="Left" Height="300" Orientation="Vertical" Minimum="-1" Maximum="1" TickFrequency="0.1"
-                TickPlacement="BottomRight" ValueChanged="Slider_ValueChanged_1" RenderTransformOrigin="0.513,0.199" Foreground="#FF393535">
+                TickPlacement="BottomRight" Value="{Binding Path=Throttle, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"  ValueChanged="Slider_ValueChanged_1" RenderTransformOrigin="0.513,0.199" Foreground="#FF393535">
         </Slider>
         <TextBlock Name="throttleIndicator" Text="{Binding ElementName=throttleSlider, Path=Value, Mode=OneWay, StringFormat=N1}" FontWeight="Bold" Margin="10,20,-15.6,352.8" FontSize="14" HorizontalAlignment="Left" Width="44"/>
 
@@ -32,10 +32,14 @@
                 <RotateTransform Angle="90"/>
             </Label.LayoutTransform>
         </Label>
-
+        <TextBlock Name="elevatorIndicator" Text="{Binding Elevator, StringFormat=N1}" DockPanel.Dock="Right" FontWeight="Bold" Margin="5,0,10,2" FontSize="14" Grid.Row="1" >
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="90" />
+            </TextBlock.LayoutTransform>
+        </TextBlock>
         <DockPanel>
             <Label DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="← rudder →"/>
-            <Slider x:Name="rudderSlider" DockPanel.Dock="Bottom" Value="{Binding Rudder, Mode=OneWay}"  Width="300" VerticalAlignment="Bottom"  Orientation="Horizontal" 
+            <Slider x:Name="rudderSlider" DockPanel.Dock="Bottom" Value="{Binding Path=Rudder,UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"  Width="300" VerticalAlignment="Bottom"  Orientation="Horizontal" 
                     Minimum="-1" Maximum="1" TickFrequency="0.1" TickPlacement="BottomRight" ValueChanged="Slider_ValueChanged" Foreground="#FF393535"/>
             <TextBlock Name="rudderIndicator" Text="{Binding ElementName=rudderSlider, Path=Value, Mode=OneWay, StringFormat=N1}" DockPanel.Dock="Right" VerticalAlignment="Top"  FontWeight="Bold" Margin="0,346,20,0" FontSize="14" />
             <local:Joystick Height="400" DockPanel.Dock="Top" Margin="10,-20,30,0"/>

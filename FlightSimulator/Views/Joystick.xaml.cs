@@ -134,9 +134,6 @@ namespace FlightSimulator.Views
 
         private void Knob_MouseMove(object sender, MouseEventArgs e)
         {
-            ///!!!!!!!!!!!!!!!!!
-            /// YOU MUST CHANGE THE FUNCTION!!!!
-            ///!!!!!!!!!!!!!!
             if (!Knob.IsMouseCaptured) return;
 
             Point newPos = e.GetPosition(Base);
@@ -146,8 +143,13 @@ namespace FlightSimulator.Views
             double distance = Math.Round(Math.Sqrt(deltaPos.X * deltaPos.X + deltaPos.Y * deltaPos.Y));
             if (distance >= canvasWidth / 2 || distance >= canvasHeight / 2)
                 return;
-            Aileron = -deltaPos.Y;
-            Elevator = deltaPos.X;
+            Elevator = -deltaPos.Y / 124;
+            Aileron = deltaPos.X / 124;
+            string setElevator =  "set controls/flight/elevator " + Elevator;
+
+            Model.Client.getInstance().Write(setElevator);
+            string setAileron =  "set controls/flight/aileron " + Aileron;
+            Model.Client.getInstance().Write(setAileron);
 
             knobPosition.X = deltaPos.X;
             knobPosition.Y = deltaPos.Y;

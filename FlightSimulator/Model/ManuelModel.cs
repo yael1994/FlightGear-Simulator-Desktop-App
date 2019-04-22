@@ -10,6 +10,7 @@ namespace FlightSimulator.Model
 {
     class ManualModel:BaseNotify
     {
+        private Dictionary<string, string> pathTable;
         private double throttle;
         public double Throttle
         {
@@ -19,7 +20,7 @@ namespace FlightSimulator.Model
             }
             set
             {
-                SymboleTable.getInstance().Set("throttle",value);
+                Client.getInstance().Write("set" + pathTable["throttle"] + value);
                 NotifyPropertyChanged("Throttle");
             }
         }
@@ -33,7 +34,7 @@ namespace FlightSimulator.Model
             }
             set
             {
-                SymboleTable.getInstance().Set("aileron",value);
+                Client.getInstance().Write("set" + pathTable["aileron"] + value);
                 NotifyPropertyChanged("Aileron");
             }
         }
@@ -47,7 +48,7 @@ namespace FlightSimulator.Model
             }
             set
             {
-                SymboleTable.getInstance().Set("elevators",value);
+                Client.getInstance().Write("set" + pathTable["elevators"] + value);
                 NotifyPropertyChanged("Elevator");
             }
         }
@@ -57,18 +58,24 @@ namespace FlightSimulator.Model
         {
             get
             {
-                return SymboleTable.getInstance().Get("rudder");
+                return rudder;
             }
             set
             {
-                SymboleTable.getInstance().Set("rudder",value);
+                rudder = value;
+                Client.getInstance().Write("set"+ pathTable["rudder"] + value);
                 NotifyPropertyChanged("Rudder");
             }
         }
 
         public ManualModel()
         {
-        
+            pathTable = new Dictionary<string, string>();
+            pathTable.Add("rudder", " controls/flight/rudder ");
+            pathTable.Add("throttle", " controls/engines/current-engine/throttle ");
+            pathTable.Add("aileron", " controls/flight/aileron ");
+            pathTable.Add("elevators", " controls/flight/elevator ");
+
         }
 
     }

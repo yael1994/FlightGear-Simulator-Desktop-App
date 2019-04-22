@@ -35,17 +35,20 @@ namespace FlightSimulator.Model
         {
             bool isConnect = false;
             tcpClient = new TcpClient();
-           
+          
+            
                 try
                 {
-                Console.WriteLine("trying to connect..");
-                tcpClient.Connect(ip, port);
+                    Console.WriteLine("trying to connect..");
+                    tcpClient.Connect(ip, port);
+                    
                 }
-                catch(SocketException e)
+                catch (SocketException e)
                 {
-                    
-                    
+
+
                 }
+            
                 isConnect = true;
                 Console.WriteLine("new Connection");
              stream = tcpClient.GetStream();
@@ -79,20 +82,22 @@ namespace FlightSimulator.Model
                 }
                 string send = lines[i] + "\r\n";
                 Console.WriteLine("Sends: " + send);
-                writer.Write(System.Text.Encoding.ASCII.GetBytes(send));
+                if (tcpClient != null && tcpClient.Connected)
+                {
+                    writer.Write(System.Text.Encoding.ASCII.GetBytes(send));
 
 
-                //check the pilot response
-                Byte[] data = new Byte[256];
+                    //check the pilot response
+                    Byte[] data = new Byte[256];
 
-                // String to store the response ASCII representation.
-                String responseData = String.Empty;
+                    // String to store the response ASCII representation.
+                    String responseData = String.Empty;
 
-                // Read the first batch of the TcpServer response bytes.
-                Int32 bytes = stream.Read(data, 0, data.Length);
-                responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-                Console.WriteLine("Received: {0}", responseData);
-                
+                    // Read the first batch of the TcpServer response bytes.
+                    Int32 bytes = stream.Read(data, 0, data.Length);
+                    responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+                    Console.WriteLine("Received: {0}", responseData);
+                }
             }
             Array.Clear(lines, 0, lines.Length);
         }

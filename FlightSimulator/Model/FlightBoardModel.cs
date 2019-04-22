@@ -13,20 +13,32 @@ namespace FlightSimulator.Model
     class FlightBoardModel : BaseNotify
     {
         private FlightBoardViewModel flightVM;
+        private static FlightBoardModel instance = null;
         private IServer server;
         private IClient client;
         public event PropertyChangingEventHandler PropertyChanging;
-
+        private FlightBoardModel() { }
+        
+        public string [] Values { get; private set; }
+        public static FlightBoardModel getInstance()
+        {
+            if(instance == null)
+            {
+                instance = new FlightBoardModel();
+            }
+            return instance;
+        }
         private double lon = 0;
         public double Lon
         {
             get
             {
-                return SymboleTable.getInstance().Get("lon");
+                return lon;
             }
             private set
             {
-                SymboleTable.getInstance().Set("lon", value);
+                lon = value;
+              //  Console.WriteLine(lon);
                 NotifyPropertyChanged("Lon");
             }
         }
@@ -38,13 +50,12 @@ namespace FlightSimulator.Model
         {
             get
             {
-                return SymboleTable.getInstance().Get("lat");
+                return lat;
             }
-            private set
+             set
             {
-              
-                
-                SymboleTable.getInstance().Set("lat", value);
+                lat = value;
+               // Console.WriteLine(lat);
                 NotifyPropertyChanged("Lat");
             }
         }
@@ -53,10 +64,16 @@ namespace FlightSimulator.Model
         {
             ISettingsModel model = ApplicationSettingsModel.Instance;
             server = new Server(model.FlightInfoPort);
-           
+            server.Start();
             Thread thread = new Thread(() =>
             {
-                server.Start();
+                while (true)
+                {
+                    Values = server.Read();
+
+                    Lon = Convert.ToDouble( Values[0]);
+                    Lat = Convert.ToDouble(Values[1]);
+                }
                 /*while (true)
                 {
                     string [] values = server.Read();
@@ -70,6 +87,7 @@ namespace FlightSimulator.Model
                 }*/
             });
             thread.Start();
+         
             client = Client.getInstance();
             client.Connect(model.FlightServerIP, model.FlightCommandPort);
         }       

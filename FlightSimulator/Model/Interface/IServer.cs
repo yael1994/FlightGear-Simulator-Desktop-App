@@ -3,6 +3,6 @@
     internal interface IServer
     {
         void Start();
-        void Read();
+        string [] Read();
     }
 }

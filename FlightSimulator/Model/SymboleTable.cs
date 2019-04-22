@@ -9,6 +9,7 @@ namespace FlightSimulator.Model
     class SymboleTable
     {
         private Dictionary<string, double> SymboleMap;
+        private Dictionary<string, string> pathTable;
         private static SymboleTable instance;
         private SymboleTable() {
             SymboleMap = new Dictionary<string, double>();
@@ -18,6 +19,14 @@ namespace FlightSimulator.Model
             SymboleMap.Add("elevators", 0);
             SymboleMap.Add("lon", 0);
             SymboleMap.Add("lat", 0);
+            pathTable = new Dictionary<string, string>();
+            pathTable.Add("rudder", " controls/flight/rudder ");
+            pathTable.Add("throttle", " controls/engines/current-engine/throttle ");
+            pathTable.Add("aileron", " controls/flight/aileron ");
+            pathTable.Add("elevators", " controls/flight/elevator ");
+
+            pathTable.Add("lon", " position/longitude-deg ");
+            pathTable.Add("lat", " position/latitude-deg ");
 
         }
 
@@ -34,7 +43,10 @@ namespace FlightSimulator.Model
         {
             if (SymboleMap.ContainsKey(key))
             {
+                
                 SymboleMap[key] = value;
+          
+
             }
         }
 

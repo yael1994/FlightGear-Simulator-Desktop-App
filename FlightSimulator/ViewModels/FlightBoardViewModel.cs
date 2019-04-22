@@ -19,7 +19,7 @@ namespace FlightSimulator.ViewModels
 
         public FlightBoardViewModel()
         {
-            model =new FlightBoardModel();
+            model = FlightBoardModel.getInstance();
             model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
            {
               NotifyPropertyChanged(e.PropertyName);
