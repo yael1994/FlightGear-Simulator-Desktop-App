@@ -76,6 +76,7 @@ namespace FlightSimulator.ViewModels.Windows
         }
         private void OkClick()
         {
+            //the OK button - save the new data in the file and close the view window
             model.SaveSettings();
             CloseAction();
         }
@@ -94,6 +95,7 @@ namespace FlightSimulator.ViewModels.Windows
         }
         private void OnCancel()
         {
+            //the cancle button - reload the data from the file and close the view window
             model.ReloadSettings();
             CloseAction();
         }

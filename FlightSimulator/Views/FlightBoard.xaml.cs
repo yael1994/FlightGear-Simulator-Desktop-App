@@ -51,7 +51,9 @@ namespace FlightSimulator.Views
         {
             if(e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))
             {
-                Point p1 = new Point(vm.Lat, vm.Lon);            // Fill here!
+                //create point form the lat and the lon that get from the flight gear
+                Point p1 = new Point(vm.Lat, vm.Lon);          
+                //draw the road for the new position
                 planeLocations.AppendAsync(Dispatcher, p1);
             }
         }

@@ -28,6 +28,7 @@ namespace FlightSimulator.Views
             InitializeComponent();
             vm = new SettingsWindowViewModel(new ApplicationSettingsModel());
             DataContext = vm;
+            //function for closing the view from the view model class.
             if (vm.CloseAction == null)
                 vm.CloseAction = new Action(() => this.Close());
         }
