@@ -20,7 +20,7 @@ namespace FlightSimulator.Model
             }
             set
             {
-                Client.getInstance().Write("set" + pathTable["throttle"] + value);
+                Client.getInstance().Write("set" + pathTable["aileron"] + value);
                 NotifyPropertyChanged("Throttle");
             }
         }
@@ -63,6 +63,7 @@ namespace FlightSimulator.Model
             set
             {
                 rudder = value;
+
                 Client.getInstance().Write("set"+ pathTable["rudder"] + value);
                 NotifyPropertyChanged("Rudder");
             }

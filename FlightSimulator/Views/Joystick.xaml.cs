@@ -1,4 +1,5 @@
-﻿using FlightSimulator.Model.EventArgs;
+﻿using FlightSimulator.Model;
+using FlightSimulator.Model.EventArgs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -146,7 +147,7 @@ namespace FlightSimulator.Views
             Elevator = -deltaPos.Y / 124;
             Aileron = deltaPos.X / 124;
             string setElevator =  "set controls/flight/elevator " + Elevator;
-
+            
             Model.Client.getInstance().Write(setElevator);
             string setAileron =  "set controls/flight/aileron " + Aileron;
             Model.Client.getInstance().Write(setAileron);
