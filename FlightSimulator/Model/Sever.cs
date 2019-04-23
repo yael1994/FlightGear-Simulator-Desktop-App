@@ -12,27 +12,27 @@ namespace FlightSimulator.Model
 {
     class Server:IServer
     {
-        private SymboleTable symboleTable;
+       
         private TcpListener listener;
         private TcpClient client;
         private IPEndPoint ep;
-        private IClientHandler<string[]> ch;
+        
         private BinaryReader reader;
-        public static Server instance;
         public Server(int port)
         {
             ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
-            ch = new ClientHandler();
+            
             listener = new TcpListener(ep);
             listener.Start();
-            symboleTable = SymboleTable.getInstance();
+          
         }
 
+        //Blocker till the simulator connected
         public void Start()
         {
-                        Console.WriteLine("Waiting for connections...");
-                     client = listener.AcceptTcpClient();
-                    Console.WriteLine("Got new connection");
+                       // Console.WriteLine("Waiting for connections...");
+            client = listener.AcceptTcpClient();
+           // Console.WriteLine("Got new connection");
             reader = new BinaryReader(client.GetStream());
         }
         
@@ -71,22 +71,6 @@ namespace FlightSimulator.Model
 
                 string [] retStr = buffer.Split(',');
             return retStr;
-                symboleTable.Set("rudder",Convert.ToDouble (retStr[21]));
-                symboleTable.Set("throttle", Convert.ToDouble(retStr[23]));
-                symboleTable.Set("aileron", Convert.ToDouble(retStr[19]));
-                symboleTable.Set("elevators", Convert.ToDouble(retStr[20]));
-                symboleTable.Set("lon", Convert.ToDouble(retStr[0]));
-                symboleTable.Set("lat", Convert.ToDouble(retStr[1]));
-               
-                Thread.Sleep(500);
-                // Get a client stream for reading and writing.
-                //  Stream stream = client.GetStream();
-                // Send the message to the connected TcpServer. 
-                // stream.Write(data, 0, data.Length);
-
-
-            
-            
 
         }
         //To close the Accept Blocker

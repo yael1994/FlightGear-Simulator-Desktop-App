@@ -95,7 +95,6 @@
     <Compile Include="Model\FlightBoardModel.cs" />
     <Compile Include="Model\Interface\IClient.cs" />
     <Compile Include="Model\Interface\ISettingsModel.cs" />
-    <Compile Include="Model\SymboleTable.cs" />
     <Compile Include="ViewModels\BaseNotify.cs" />
     <Compile Include="ViewModels\AutoPilotViewModel.cs" />
     <Compile Include="ViewModels\ManualViewModel.cs" />

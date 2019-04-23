@@ -16,10 +16,11 @@ namespace FlightSimulator.Model
         {
             get
             {
-                return SymboleTable.getInstance().Get("throttle");
+                return throttle;
             }
             set
             {
+                throttle = value;
                 Client.getInstance().Write("set" + pathTable["aileron"] + value);
                 NotifyPropertyChanged("Throttle");
             }
@@ -30,10 +31,11 @@ namespace FlightSimulator.Model
         {
             get
             {
-                return SymboleTable.getInstance().Get("aileron");
+                return aileron;
             }
             set
             {
+                aileron = value;
                 Client.getInstance().Write("set" + pathTable["aileron"] + value);
                 NotifyPropertyChanged("Aileron");
             }
@@ -44,10 +46,11 @@ namespace FlightSimulator.Model
         {
             get
             {
-                return SymboleTable.getInstance().Get("elevators");
+                return elevator;
             }
             set
             {
+                elevator = value;
                 Client.getInstance().Write("set" + pathTable["elevators"] + value);
                 NotifyPropertyChanged("Elevator");
             }
@@ -69,6 +72,7 @@ namespace FlightSimulator.Model
             }
         }
 
+        //Declare on path table to send a "set" to the simulator
         public ManualModel()
         {
             pathTable = new Dictionary<string, string>();

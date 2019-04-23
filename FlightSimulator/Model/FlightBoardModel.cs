@@ -12,11 +12,10 @@ namespace FlightSimulator.Model
 {
     class FlightBoardModel : BaseNotify
     {
-        private FlightBoardViewModel flightVM;
+       
         private static FlightBoardModel instance = null;
         private IServer server;
         private IClient client;
-        public event PropertyChangingEventHandler PropertyChanging;
         private FlightBoardModel() { }
         
         public string [] Values { get; private set; }
@@ -38,7 +37,7 @@ namespace FlightSimulator.Model
             private set
             {
                 lon = value;
-              //  Console.WriteLine(lon);
+            
                 NotifyPropertyChanged("Lon");
             }
         }
@@ -55,7 +54,7 @@ namespace FlightSimulator.Model
              set
             {
                 lat = value;
-               // Console.WriteLine(lat);
+            
                 NotifyPropertyChanged("Lat");
             }
         }
@@ -64,9 +63,11 @@ namespace FlightSimulator.Model
         {
             ISettingsModel model = ApplicationSettingsModel.Instance;
             server = new Server(model.FlightInfoPort);
+            //wait till the server is connected
             server.Start();
             Thread thread = new Thread(() =>
             {
+                //Read value from the simulator and update lon and lat 
                 while (true)
                 {
                     Values = server.Read();
@@ -74,17 +75,6 @@ namespace FlightSimulator.Model
                     Lon = Convert.ToDouble( Values[0]);
                     Lat = Convert.ToDouble(Values[1]);
                 }
-                /*while (true)
-                {
-                    string [] values = server.Read();
-                    if(!values[0].Equals("nan"))
-                    Lon = Double.Parse(values[0]);
-                    if (!values[1].Equals("nan"))
-                        Lat = Double.Parse(values[1]);
-
-                   Console.WriteLine(Lon);
-                    Console.WriteLine(Lat);
-                }*/
             });
             thread.Start();
          
