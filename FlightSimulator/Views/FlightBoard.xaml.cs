@@ -49,7 +49,7 @@ namespace FlightSimulator.Views
 
         private void Vm_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))
+            if(e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon") && (vm.Lat!=0 && vm.Lon!=0))
             {
                 //create point form the lat and the lon that get from the flight gear
                 Point p1 = new Point(vm.Lat, vm.Lon);          
