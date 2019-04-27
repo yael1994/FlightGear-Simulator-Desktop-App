@@ -15,7 +15,7 @@ namespace FlightSimulator.Model
        
         private static FlightBoardModel instance = null;
         private IServer server;
-        private IClient client;
+        private Client client;
         private FlightBoardModel() { }
         
         public string [] Values { get; private set; }
@@ -64,16 +64,26 @@ namespace FlightSimulator.Model
             ISettingsModel model = ApplicationSettingsModel.Instance;
             server = new Server(model.FlightInfoPort);
             //wait till the server is connected
-            server.Start();
+           
             Thread thread = new Thread(() =>
             {
+                server.Start();
+                bool isConnect = true;
                 //Read value from the simulator and update lon and lat 
-                while (true)
+                while (isConnect == true)
                 {
+                   
                     Values = server.Read();
-
-                    Lon = Convert.ToDouble( Values[0]);
-                    Lat = Convert.ToDouble(Values[1]);
+                    try
+                    {
+                        Lon = Convert.ToDouble(Values[0]);
+                        Lat = Convert.ToDouble(Values[1]);
+                    }catch(Exception e)
+                    {
+                        isConnect = false;
+                        Client.getInstance().Disconnect();
+                        server.Disconnect();
+                    }
                 }
             });
             thread.Start();
@@ -83,3 +93,6 @@ namespace FlightSimulator.Model
         }       
     }
 }
+
+
+

@@ -30,9 +30,9 @@ namespace FlightSimulator.Model
         //Blocker till the simulator connected
         public void Start()
         {
-                       // Console.WriteLine("Waiting for connections...");
-            client = listener.AcceptTcpClient();
-           // Console.WriteLine("Got new connection");
+                      //  Console.WriteLine("Waiting for connections...");
+        client = listener.AcceptTcpClient();
+         //   Console.WriteLine("Got new connection");
             reader = new BinaryReader(client.GetStream());
         }
         
@@ -48,7 +48,7 @@ namespace FlightSimulator.Model
                 catch
                 {
                     Console.WriteLine("Reading from client failed");
-                    Stop();
+                Disconnect();
                 return null;
                    
                 }
@@ -63,7 +63,7 @@ namespace FlightSimulator.Model
                     catch
                     {
                         Console.WriteLine("Reading from client failed");
-                        Stop();
+                    Disconnect();
                       return null;
                 }
 
@@ -74,9 +74,10 @@ namespace FlightSimulator.Model
 
         }
         //To close the Accept Blocker
-        public void Stop()
+        public void Disconnect()
         {
             listener.Stop();
+            
         }
 
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -40,11 +41,14 @@ namespace FlightSimulator.Views
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            planeLocations = new ObservableDataSource<Point>();
-            // Set identity mapping of point in collection to point on plot
-            planeLocations.SetXYMapping(p => p);
-            // Add line graph to plotter
-            plotter.AddLineGraph(planeLocations, 2, "Route");
+           
+                    planeLocations = new ObservableDataSource<Point>();
+                    // Set identity mapping of point in collection to point on plot
+                    planeLocations.SetXYMapping(p => p);
+                    // Add line graph to plotter
+                    plotter.AddLineGraph(planeLocations, 2, "Route");
+           
+            
         }
 
         private void Vm_PropertyChanged(object sender, PropertyChangedEventArgs e)

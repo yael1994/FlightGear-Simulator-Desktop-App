@@ -21,7 +21,7 @@ namespace FlightSimulator.Model
             set
             {
                 throttle = value;
-                Client.getInstance().Write("set" + pathTable["throttle"] + value);
+                Client.getInstance().Write("set" + pathTable["aileron"] + value);
                 NotifyPropertyChanged("Throttle");
             }
         }

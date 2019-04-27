@@ -119,6 +119,7 @@ namespace FlightSimulator.Views
             Knob.MouseMove += Knob_MouseMove;
 
             centerKnob = Knob.Resources["CenterKnob"] as Storyboard;
+            
         }
 
         private void Knob_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -133,6 +134,7 @@ namespace FlightSimulator.Views
             centerKnob.Stop();
         }
 
+
         private void Knob_MouseMove(object sender, MouseEventArgs e)
         {
             if (!Knob.IsMouseCaptured) return;
@@ -146,11 +148,14 @@ namespace FlightSimulator.Views
                 return;
             Elevator = -deltaPos.Y / 124;
             Aileron = deltaPos.X / 124;
-            string setElevator =  "set controls/flight/elevator " + Elevator;
+          
+                string setElevator = "set controls/flight/elevator " + Elevator;
+
+                Model.Client.getInstance().Write(setElevator);
+                string setAileron = "set controls/flight/aileron " + Aileron;
+                Model.Client.getInstance().Write(setAileron);
+           
             
-            Model.Client.getInstance().Write(setElevator);
-            string setAileron =  "set controls/flight/aileron " + Aileron;
-            Model.Client.getInstance().Write(setAileron);
 
             knobPosition.X = deltaPos.X;
             knobPosition.Y = deltaPos.Y;

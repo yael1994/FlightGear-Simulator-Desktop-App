@@ -4,5 +4,6 @@
     {
         void Start();
         string [] Read();
+        void Disconnect();
     }
 }
