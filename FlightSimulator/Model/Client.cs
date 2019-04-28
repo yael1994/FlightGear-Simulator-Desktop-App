@@ -103,7 +103,10 @@ namespace FlightSimulator.Model
         public bool isConnect()
         {
             return tcpClient.Connected;
-
+        }
+        ~Client()
+        {
+            tcpClient.Close();
         }
     }
 }

@@ -79,7 +79,9 @@ namespace FlightSimulator.Model
             listener.Stop();
             
         }
-
+        ~Server(){
+            listener.Stop();
+        }
     }
     }
         
