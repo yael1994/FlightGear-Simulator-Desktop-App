@@ -4,6 +4,7 @@ Implmented using WPF technology and MVVM architecture.
 
 ## App windows
 the main window will be presented:
+
 ![](ex2-1.png)
 On the left, you can see the movement of the pkan (lontitude and latitude). On the right, you can control the movement.
 you can change the lon and lat manualy with the joistick or you can do it automatic, with ordering orders.
@@ -15,6 +16,7 @@ b. Next, in order to help you speed things up and bypass the take-off procedures
 ## Flying the aircraft
 ### connecting 
 Run the application and click on the 'Settings' button and a new window will pop up:
+
 ![](ex2-2.png)
 Here you config the settings to connect to the simulator. The default settings will appear. You can change these settings to your liking.
 
@@ -23,10 +25,12 @@ The aircraft can be controlled using either a joystick (manual) or a stream of c
 
 ### Manual control
 The joystick is used to navigate the aircraft. Shifting the rod changes the values presented in the display and sends them to the simulator.
+
 ![](ex2-4.JPG)
 
 ### Auto control
 Click on the 'Auto' tab to switch to the auto control. Here you write commands in a specific format the simulator can read and apply:
+
 ![](ex2-3.png)
 You can add a strim of commands and after you finish click on 'OK'
 ```
