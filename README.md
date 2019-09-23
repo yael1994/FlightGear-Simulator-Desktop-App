@@ -32,7 +32,8 @@ The joystick is used to navigate the aircraft. Shifting the rod changes the valu
 Click on the 'Auto' tab to switch to the auto control. Here you write commands in a specific format the simulator can read and apply:
 
 ![](ex2-3.png)
-You can add a strim of commands and after you finish click on 'OK'
+
+You can add a strim of commands and after you finish click on 'OK'. for exmpal:
 ```
 set controls/flight/rudder -1
 ```
