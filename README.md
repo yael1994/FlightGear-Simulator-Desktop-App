@@ -6,6 +6,7 @@ Implmented using WPF technology and MVVM architecture.
 the main window will be presented:
 
 ![](ex2-1.png)
+
 On the left, you can see the movement of the pkan (lontitude and latitude). On the right, you can control the movement.
 you can change the lon and lat manualy with the joistick or you can do it automatic, with ordering orders.
 
@@ -18,6 +19,7 @@ b. Next, in order to help you speed things up and bypass the take-off procedures
 Run the application and click on the 'Settings' button and a new window will pop up:
 
 ![](ex2-2.png)
+
 Here you config the settings to connect to the simulator. The default settings will appear. You can change these settings to your liking.
 
 ## Controlling the aircraft
